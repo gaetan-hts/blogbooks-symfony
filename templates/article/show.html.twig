@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Article
+{% endblock %}
+
+{% block body %}
+	<h1>Article</h1>
+
+	<table class="table">
+		<tbody>
+			<tr>
+				<th>Id</th>
+				<td>{{ article.id }}</td>
+			</tr>
+			<tr>
+				<th>Title</th>
+				<td>{{ article.title }}</td>
+			</tr>
+			<tr>
+				<th>Content</th>
+				<td>{{ article.content }}</td>
+			</tr>
+		</tbody>
+	</table>
+
+	<div>
+		<a href="{{ path('app_comment_new', {'id': article.id}) }}">Ajouter un commentaire</a>
+	</div>
+
+	<div>
+		{% for comment in comment %}
+			<div>{{ comment.user.email }}
+				à dit :</div>
+			<div>{{ comment.content }}</div>
+		{% endfor %}
+	</div>
+
+{% endblock %}

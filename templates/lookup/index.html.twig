@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recherche
+{% endblock %}
+
+{% block body %}
+	<h1 class="pb-1">Resultats :
+	</h1>
+	{% for article in articles %}
+		<h3 class="pt-5">{{ article.title }}</h3>
+		<div>{{ article.content }}</div>
+		<div>
+			<a href="{{ path('app_article_show', {'id': article.id}) }}">Voir plus</a>
+		</div>
+	{% else %}
+		<div>
+			Aucun article correspondant à votre recherche.
+		</div>
+	{% endfor %}
+{% endblock %}
